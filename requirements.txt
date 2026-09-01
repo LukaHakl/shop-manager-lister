@@ -1,0 +1,4 @@
+PyYAML==6.0.3          # the form description in config.yaml
+selenium==4.36.0       # only stages 1 and 3 need a browser
+
+pytest==9.1.1          # tests only

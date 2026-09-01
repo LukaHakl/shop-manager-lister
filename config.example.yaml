@@ -1,0 +1,44 @@
+# Copy to config.yaml and fill in. config.yaml is gitignored.
+#
+# The whole point of this file is that stage 3 contains no selectors. The DOM of
+# any marketplace admin UI changes; this is the part that changes with it.
+
+form:
+  steps:
+    # Both dropdowns first, and in this order -- the object list only populates
+    # after a creator is chosen.
+    - tab: Info
+      field: creator
+      selector: "#creator-select"
+      # These lists are long and searchable, so type into the filter rather than
+      # scrolling to find the option.
+      action: select_search
+      value: "{creator_value}"
+      required: true          # empty here raises rather than half-filling a draft
+
+    - tab: Info
+      field: object
+      selector: "#object-select"
+      action: select_search
+      value: "{object_value}"
+      required: true
+
+    - tab: Info
+      field: title
+      selector: "input[name=title]"
+      value: "{title}"
+      required: true
+
+    - tab: Organize
+      field: tags
+      selector: "input[name=tags]"
+      value: "{tags}"
+
+    - tab: Pricing
+      field: price
+      selector: "input[name=price]"
+      value: "{price}"
+      required: true
+
+# Steps are grouped by tab in the order written, because each tab switch is a
+# page transition and a wait. Bouncing between tabs costs seconds per listing.
